@@ -1,0 +1,24 @@
+{
+  "name": "fcc-timestamp",
+  "version": "1.0.0",
+  "description": "<https://timestamp.gordondoskas.com>",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gordon2012/fcc-timestamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gordon2012/fcc-timestamp/issues"
+  },
+  "homepage": "https://github.com/gordon2012/fcc-timestamp#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4"
+  }
+}
