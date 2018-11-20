@@ -5,6 +5,7 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({ optionSuccessStatus: 200 }));
+app.use(express.static('public'));
 
 app.get('/', function(req, res) {
   res.sendFile(path.resolve('views/index.html'));
