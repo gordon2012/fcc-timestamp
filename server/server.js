@@ -8,7 +8,7 @@ import App from '../common/App';
 const app = express();
 
 app.use(cors({ optionSuccessStatus: 200 }));
-app.use(express.static('public'));
+app.use(express.static('.build'));
 
 app.get('/', function(req, res) {
   const script =
