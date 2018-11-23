@@ -4,39 +4,55 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const StartServerPlugin = require('start-server-webpack-plugin');
 
-module.exports = {
-  entry: {
-    index: ['webpack/hot/poll?1000', './server/index']
-  },
-  watch: true,
-  target: 'node',
-  externals: [
-    nodeExternals({
-      whitelist: ['webpack/hot/poll?1000']
-    })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.js?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
-      }
-    ]
-  },
-  plugins: [
-    new StartServerPlugin('server.js'),
+module.exports = env => {
+  const production = !!(env && env.NODE_ENV && env.NODE_ENV === 'production');
+
+  const plugins = [
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
-      process_env: {
+      'process.env': {
         BUILD_TARGET: JSON.stringify('server')
       }
-    })
-  ],
-  output: {
-    path: path.join(__dirname, '.build'),
-    filename: 'server.js'
-  }
+    }),
+    ...(production
+      ? []
+      : [
+          new StartServerPlugin('server.js'),
+          new webpack.HotModuleReplacementPlugin()
+        ])
+  ];
+
+  const index = [
+    './server/index',
+    ...(production ? [] : ['webpack/hot/poll?1000'])
+  ];
+
+  return {
+    entry: {
+      index
+    },
+    mode: production ? 'production' : 'development',
+    watch: !production,
+    target: 'node',
+    externals: [
+      nodeExternals({
+        whitelist: ['webpack/hot/poll?1000']
+      })
+    ],
+    module: {
+      rules: [
+        {
+          test: /\.js?$/,
+          use: 'babel-loader',
+          exclude: /node_modules/
+        }
+      ]
+    },
+    plugins,
+    output: {
+      path: path.join(__dirname, '.build'),
+      filename: 'server.js'
+    }
+  };
 };
