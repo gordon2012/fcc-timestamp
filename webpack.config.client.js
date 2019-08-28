@@ -58,7 +58,7 @@ module.exports = env => {
       }
     },
     output: {
-      path: path.join(__dirname, '.build'),
+      path: path.join(__dirname, 'public'),
       publicPath: 'http://localhost:4001/',
       filename: 'client.js'
     }

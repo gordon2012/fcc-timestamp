@@ -4,7 +4,7 @@
   "description": "<https://timestamp.gordondoskas.com>",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf ./.build",
+    "clean": "rm -rf ./public",
     "build:server": "webpack --env.NODE_ENV=production --config webpack.config.server.js",
     "build:client": "webpack --env.NODE_ENV=production --config webpack.config.client.js",
     "build": "npm run clean && npm run build:server && npm run build:client",
