@@ -1,14 +1,15 @@
 {
   "version": 2,
+  "builds": [{ "src": "public/server.js", "use": "@now/node-server" }],
   "routes": [
     {
       "src": "/timestamp/:input",
-      "dest": "/index.js",
+      "dest": "/public/server.js",
       "methods": ["GET"]
     },
     {
       "src": "/timestamp",
-      "dest": "/index.js",
+      "dest": "/public/server.js",
       "methods": ["GET"]
     }
   ]
