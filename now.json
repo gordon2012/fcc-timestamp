@@ -1,6 +1,10 @@
 {
   "version": 2,
-  "builds": [{ "src": "server/index.js", "use": "@now/node-server" }],
+  "builds": [
+    { "src": "server.js", "use": "@now/node-server" },
+    { "src": "package.json", "use": "@now/static-build" }
+  ],
+
   "routes": [
     {
       "src": "/timestamp/:input",
