@@ -1,0 +1,12 @@
+client
+common
+server
+
+.babelrc
+.prettierrc
+ecosystem.config.js
+package-lock.json
+package.json
+README.md
+webpack.config.client.js
+webpack.config.server.js
