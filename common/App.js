@@ -10,7 +10,9 @@ class App extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
 
-        fetch(`api/timestamp/${this.state.input}`).then(response =>
+        const input = this.state.input ? `/${this.state.input}` : '';
+
+        fetch(`api/timestamp${input}`).then(response =>
             response.json().then(data =>
                 this.setState({
                     input: '',
@@ -73,8 +75,8 @@ class App extends Component {
                                     If the date string is{' '}
                                     <strong>invalid</strong> the api returns a
                                     JSON having the structure <br />
-                                    <code>{`{"unix": null, "utc" : "Invalid Date"}`}</code>
-                                    . It is what you get from the date
+                                    <code>{`{"error" : "Invalid Date"}`}</code>.
+                                    It is what you get from the date
                                     manipulation functions used above.
                                 </li>
                             </ol>

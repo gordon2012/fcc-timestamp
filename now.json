@@ -8,6 +8,11 @@
 
     "routes": [
         {
+            "src": "/api/timestamp",
+            "dest": "/public/server.js",
+            "methods": ["GET"]
+        },
+        {
             "src": "/api/timestamp/(.*)",
             "dest": "/public/server.js",
             "methods": ["GET"]
