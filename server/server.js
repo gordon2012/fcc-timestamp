@@ -3,12 +3,14 @@ import cors from 'cors';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 
-import App from '../common/App';
+import App from '../client/App';
 
 const app = express();
 
 app.use(cors({ optionSuccessStatus: 200 }));
-app.use(express.static('.build'));
+
+// app.use(express.static('.build'));
+app.use(express.static('public'));
 
 app.get('/', function(req, res) {
     const script =
@@ -26,6 +28,7 @@ app.get('/', function(req, res) {
                 <title>Timestamp Microservice | freeCodeCamp</title>
                 <meta name="description" content="">
                 <meta name="viewport" content="width=device-width,  initial-scale=1">
+                <link rel="stylesheet" type="text/css" href="/style.css" />
             </head>
             <body>
                 <div id="root">${application}</div>

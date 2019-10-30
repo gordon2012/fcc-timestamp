@@ -2,19 +2,20 @@
     "name": "fcc-timestamp",
     "version": 2,
     "builds": [
-        { "src": "public/server.js", "use": "@now/node-server" },
-        { "src": "public/client.js", "use": "@now/static" }
+        { "src": "build/server.js", "use": "@now/node-server" },
+        { "src": "build/client.js", "use": "@now/static" },
+        { "src": "public/style.css", "use": "@now/static" }
     ],
 
     "routes": [
         {
             "src": "/api/timestamp",
-            "dest": "/public/server.js",
+            "dest": "/build/server.js",
             "methods": ["GET"]
         },
         {
             "src": "/api/timestamp/(.*)",
-            "dest": "/public/server.js",
+            "dest": "/build/server.js",
             "methods": ["GET"]
         },
         {
@@ -22,8 +23,9 @@
             "headers": {
                 "cache-control": "s-maxage=0"
             },
-            "dest": "/public/server.js"
+            "dest": "/build/server.js"
         },
-        { "src": "/client.js", "dest": "/public/client.js" }
+        { "src": "/client.js", "dest": "/build/client.js" },
+        { "src": "/style.css", "dest": "/public/style.css" }
     ]
 }
